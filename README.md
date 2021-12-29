@@ -18,14 +18,37 @@
  - RE and NLTK for natural language processing (tokenization)
  - Sklearn for word vectorization and term frequency-inverse document frequency transformation
 
+    
+ 
+# File Descriptions 📂
+
+- `data` folder - every information on every article available to users on the platform is contained in `articles_community.csv` while tracked 'user-item-interactions.csv` holds all data of how over 5000 users interacted with 714 articles on the platform.
+- `Recommendations_with_IBM.ipynb` - raw Jupyer Notebook containing all Python codes showcasing the building process and end results. 
+- 'project_tests.py` - python script for testing functions in notebook
+- `top_10.p`,  `top_20.p` and  `top_5.p` - pickled data of from notebook of top 10, 20 and 5 articles on the platform
+- `user-item-matrix.p` - pickled user to article matrix. 
+
+
 
 # Summary 🎯
 
+As I mentioned earlier, I built out different article recommendation systems for the IBM Watson Studio Platform for users on the platform to receive more personalised article recommendations and to mitigate the cold start problem for new users. The Jupyter Notebook containing this work has been divided into sections to improve the readability and structure. 
+    
+### Exploratory Data Analysis
 
 
-# File Descriptions 📂
 
-
+### Rank-based Recommendations
+    
+    
+### User-User Based Collaborative Filtering 
+    
+    
+### Content-based Recommendations
+    
+    
+### Matrix Factorization
+  
 
 
 # Licence 📃
