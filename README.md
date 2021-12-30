@@ -35,22 +35,48 @@
 As I mentioned earlier, I built out different article recommendation systems for the IBM Watson Studio Platform for users on the platform to receive more personalised article recommendations and to mitigate the cold start problem for new users. The Jupyter Notebook containing this work has been divided into sections to improve the readability and structure. 
     
 ### Exploratory Data Analysis
+I explored the data provided by IBM for the project to answer the following questions:
 
-
+- What is the distribution of how many articles a user interacts with in the dataset?
+- The number of unique articles that have an interaction with a user.
+- The number of unique articles in the dataset (whether they have any interactions or not).
+- The number of unique users in the dataset. (excluding null values)
+- The number of user-article interactions in the dataset.
+- The most viewed article_id
 
 ### Rank-based Recommendations
-    
-    
+One way to create recommendations is to rank items (articles) based on existing user rating, but the data provided does not have such information. Hence, we can only assume that the most popular articles are the ones with the most user interactions, i.e. how often an article was interacted with.
+This means we created functions to: 
+- return the names of top articles with most interactions
+- return the IDs of these top article  
+
 ### User-User Based Collaborative Filtering 
-    
-    
-### Content-based Recommendations
-    
-    
-### Matrix Factorization
+In order to build better recommendations for the users of IBM's platform, we can explore the similarity of users on the platform based on the range of articles they have interacted with, then we can make recommendations based off of the differences in the most similar users. This is a step towards making more personalised recommendations for the users on the platform. 
+Our measure of similarity between the users was found by simply taking vector dot products between users. Here are the major steps I followed to achieve this:
+
+- Re-formatted user-items interaction data to show unique users and articles
+- Created a boolean matrix between each user and each article (user-item pairs) to show interaction. 1 for interation, 0 otherwise
+- Found similar users based on similarity of their interactions
+- Returned article names based on user IDs
+- Made recommendations by defining a User-user collaborative Filtering function.
   
-
-
+### Content-based Recommendations with NLP
+Since we have sufficient content information about the articles in our `articles_community.csv` file, there are different ways we can use the article content to find similarities between the articles so we can make recommendations to interested users. 
+- Using article titles to find similarity
+- Using article description to find similarity
+- Using entire article body to find similarity
+- Using any combination of the 3 above. 
+    
+Here, I have opted for a combination of the article titles and description to determine which articles are most similar. I implemented this as follows:
+- Wrote a Tokenization function to tokenize the title of each article
+- Created df_merged to combine all the articles available on the platform, whether or not any user interacted with the article
+- Found similar articles function using the output vector of tfidf class to determine which articles are the most similar to the article
+- Wrote a function that performs content recommendations
+ 
+### Matrix Factorization with ML for COLD-START
+Lastly, I completed a machine learning approach to building recommendations. Using the user-item interactions, I built out a matrix decomposition with SVD. Using this decomposition, I evaluated how accurate our predictions might be for articles that new users might interact. 
+Finally, I discussed which methods we might use for recommending articles on the platform to new users and established users on the IBM Watson Studio Platform. 
+    
 # Licence 📃
 The MIT License (MIT)
 
