@@ -9,6 +9,7 @@ del df_content['Unnamed: 0']
 
 
 def sol_1_test(sol_1_dict):
+    # Exploratory data analysis tests in Notebook
     sol_1_dict_ = {
     '`50% of individuals have _____ or fewer interactions.`': 3,
     '`The total number of user-article interactions in the dataset is ______.`': 45993,
@@ -28,8 +29,9 @@ def sol_1_test(sol_1_dict):
             if sol_1_dict_[k] != sol_1_dict[k]:
                 print("Oops! It looks like the value associated with: {} wasn't right. Try again.  It might just be the datatype.  All of the values should be ints except the article_id should be a string.  Let each row be considered a separate user-article interaction.  If a user interacts with an article 3 times, these are considered 3 separate interactions.\n\n  Notice you may also find the number of unique users as 5149 if you count the null user.  However, this is hard to catch without mapping first!".format(k))
                 
-                
+
 def sol_2_test(top_articles):
+    # Tests for rank-based recommendations
     top_5 = top_articles(5)
     top_10 = top_articles(10)
     top_20 = top_articles(20)
@@ -44,6 +46,7 @@ def sol_2_test(top_articles):
     
     
 def sol_5_test(sol_5_dict):
+    # Tests for user-user collaborative filtering
     sol_5_dict_1 = {
     'The user that is most similar to user 1.': 3933, 
     'The user that is the 10th most similar to user 131': 242
@@ -58,7 +61,7 @@ def sol_5_test(sol_5_dict):
     
     
 def sol_4_test(sol_4_dict):
-    
+    # Tests for content-based filtering and cold-start problem
     a = 662 # len(test_idx) - user_item_test.shape[0]
     b = 574 # user_test_shape[1] or len(test_arts) because we can make predictions for all articles
     c = 20 # user_item_test.shape[0]
